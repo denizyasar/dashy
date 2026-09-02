@@ -1,0 +1,181 @@
+name: Build Executables
+
+# ----------------------------------------------------------------------------
+# Builds every "main" package found anywhere in the dashy Go module
+# (github.com/NorthlandPowerEurope/dashy) into standalone, statically-linked
+# executables for Windows, Linux and macOS - without needing to hard-code the
+# location of dashy.go / dashy_agent.go inside the repo.
+#
+# On every push/PR it produces downloadable build artifacts.
+# On a version tag (v1.2.3) it also attaches the binaries to a GitHub Release.
+# ----------------------------------------------------------------------------
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags: [ "v*.*.*" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch: {}   # allows manual "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write   # needed so the release job can upload build artifacts
+
+jobs:
+  # --------------------------------------------------------------------------
+  # 1) Static checks - fail fast before spending time cross-compiling
+  # --------------------------------------------------------------------------
+  verify:
+    name: Vet & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go (version pinned from go.mod)
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Download modules
+        run: go mod download
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: go build (compile check only, no artifacts)
+        run: go build ./...
+
+      - name: go test
+        run: go test ./... -v
+        continue-on-error: true   # remove this line once a test-suite exists
+
+  # --------------------------------------------------------------------------
+  # 2) Cross-compile every main package for each target platform
+  # --------------------------------------------------------------------------
+  build:
+    name: Build (${{ matrix.goos }}/${{ matrix.goarch }})
+    needs: verify
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Northland Power's dashy/dashy-agent hosts are Windows Server -> primary target
+          - goos: windows
+            goarch: amd64
+            ext: ".exe"
+          - goos: windows
+            goarch: arm64
+            ext: ".exe"
+          # Linux, in case the services are ever containerized / run on Linux
+          - goos: linux
+            goarch: amd64
+            ext: ""
+          - goos: linux
+            goarch: arm64
+            ext: ""
+          # macOS, useful for local development on Apple hardware
+          - goos: darwin
+            goarch: amd64
+            ext: ""
+          - goos: darwin
+            goarch: arm64
+            ext: ""
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go (version pinned from go.mod)
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Download modules
+        run: go mod download
+
+      - name: Discover and build every "main" package in the module
+        shell: bash
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: "0"
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          MODULE="$(go list -m)"
+
+          # Find every buildable "package main" in the module, wherever it lives
+          # (root, cmd/dashy, agent/, etc.) - this avoids hard-coding folder names.
+          mapfile -t MAIN_PKGS < <(go list -f '{{if eq .Name "main"}}{{.ImportPath}}{{end}}' ./... | sed '/^$/d')
+
+          # Optional: skip vendored example/generator tools that ship with
+          # third-party packages (e.g. opcua client/server samples, codegen tools).
+          # Add path fragments to EXCLUDE_PATTERN (pipe-separated) to ignore them.
+          EXCLUDE_PATTERN="/examples/|/example/|/gen/|/cmd/gen"
+          FILTERED_PKGS=()
+          for pkg in "${MAIN_PKGS[@]}"; do
+            if echo "$pkg" | grep -Eq "$EXCLUDE_PATTERN"; then
+              echo "Skipping excluded package: $pkg"
+              continue
+            fi
+            FILTERED_PKGS+=("$pkg")
+          done
+
+          if [ ${#FILTERED_PKGS[@]} -eq 0 ]; then
+            echo "::error::No buildable main packages were found in the module."
+            exit 1
+          fi
+
+          for pkg in "${FILTERED_PKGS[@]}"; do
+            if [ "$pkg" = "$MODULE" ]; then
+              name="$(basename "$MODULE")"
+            else
+              name="$(basename "$pkg")"
+            fi
+            out="dist/${name}-${GOOS}-${GOARCH}${{ matrix.ext }}"
+            echo "Building $pkg -> $out"
+            go build -trimpath -ldflags="-s -w" -o "$out" "$pkg"
+          done
+
+          ls -la dist
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashy-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30
+
+  # --------------------------------------------------------------------------
+  # 3) Attach binaries to a GitHub Release when a version tag is pushed
+  # --------------------------------------------------------------------------
+  release:
+    name: Publish GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Flatten artifacts into a single release folder
+        run: |
+          mkdir -p release
+          find artifacts -type f -exec cp {} release/ \;
+          ls -la release
+
+      - name: Create / update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
