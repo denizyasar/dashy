@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset=utf-8>
+    <title>{{.Title}}</title>
+    <meta http-equiv="refresh" content="{{.Refresh}}" >
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/bulma.css">
+    <link type="text/css" rel="stylesheet" href="/fontawesome.css">
+    <link type="text/css" rel="stylesheet" href="/main.css">
+    <style>
+        html {
+            overflow: auto;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="/logo.png" alt="" class="sharpen-image">
+            <p style="padding-left:8px;" class="is-family-monospace has-text-white">{{.Title}}</p>
+        </a>
+    </div>
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="tags has-addons">
+                <span class="tag is-{{.Status}} is-light has-text-weight-bold">Last updated (UTC)</span>
+                <span class="tag is-{{.Status}} is-light">{{.FormattedTimestamp}}</span>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <a class="button is-light" href="/logout">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section" style="padding:14px;">
+{{range $row := .Variables}}
+    <div class="tile is-horizontal is-ancestor">
+    {{range $variable := $row}}
+        <div class="tile is-parent">
+            <div class="tile is-child card">
+                <div class="card-content has-text-centered">
+                    <p class="title is-size-4">
+                    {{$variable.Title}}
+                    </p>
+                    <p class="subtitle is-size-6">
+                    {{$variable.Subtitle}}
+                    </p>
+                    <div class="content has-text-centered is-family-monospace is-size-1 has-text-weight-bold"
+                         style="font-size:4rem;">{{$variable.Value.FormattedValue}} {{$variable.Unit}}</div>
+                </div>
+
+                <div class="buttons is-left card-button-wrapper">
+                    <a class="button card-control card-button is-small{{if eq $variable.Capacity 0}} is-static{{end}}" href="/{{$.Ident}}/{{$variable.Ident}}"
+                       title="view historical data">
+                            <span class="icon{{if eq $variable.Capacity 0}} has-text-grey{{end}}">
+                                <i class="fas fa-history"></i>
+                            </span>
+                    </a>
+                </div>
+
+                <div class="buttons is-right card-timestamp-wrapper">
+                    <button class="button card-control card-timestamp is-small is-static">
+                        <span class="is-light has-text-{{$variable.Status}}">{{$variable.Value.FormattedTimestamp}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {{end}}
+    </div>
+{{end}}
+</section>
+</body>
+</html>

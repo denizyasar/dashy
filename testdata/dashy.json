@@ -1,0 +1,75 @@
+{
+  "webserver": {
+    "address": "127.0.0.1:8080",
+    "authentication": "basic",
+    "read_timeout_seconds": 5,
+    "write_timeout_seconds": 5,
+    "idle_timeout_seconds": 120
+  },
+  "dashboards": [{
+    "ident": "wavedata",
+    "title": "Wave Data",
+    "refresh": 5,
+    "nodata": 20,
+    "variables": [
+      [
+        {
+          "ident": "wave_height",
+          "title": "Significant Wave Height",
+          "nodata": 60,
+          "capacity": 10
+        },
+        {
+          "ident": "wave_height_max",
+          "title": "Maximum Wave Height",
+          "nodata": 60,
+          "capacity": 10
+        },
+        {
+          "ident": "water_temp",
+          "title": "Water Temperature",
+          "nodata": 60,
+          "capacity": 10
+        }
+      ],
+      [
+        {
+          "ident": "wave_period",
+          "title": "Mean Wave Period",
+          "nodata": 60,
+          "capacity": 10
+        },
+        {
+          "ident": "peak_period",
+          "title": "Peak Wave Period",
+          "nodata": 60,
+          "capacity": 10
+        }
+      ],
+      [
+        {
+          "ident": "mean_direction",
+          "title": "Mean wave direction",
+          "nodata": 60,
+          "capacity": 10
+        },
+        {
+          "ident": "peak_direction",
+          "title": "Peak wave direction",
+          "nodata": 60,
+          "capacity": 10
+        }
+      ]
+    ],
+    "authentication": {
+     "127.0.0.1": "secret"
+    }
+  }],
+  "logging": {
+    "level": "info",
+    "maxsize": 0,
+    "maxage": 0,
+    "maxbackups": 0,
+    "compress": true
+  }
+}

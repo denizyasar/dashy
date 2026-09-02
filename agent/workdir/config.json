@@ -1,0 +1,52 @@
+{
+  "opcua": {
+    "port": 4840,
+    "nodeset": "nodeset_n1.xml",
+    "users": "opc_users.json"
+  },
+  "sinks":  [
+    {
+      "name": "opcua",
+      "type": "opcua",
+      "params": {
+          "address": "opc.tcp://localhost:4840",
+        "username": "admin",
+        "password": "admin",
+        "namespace":"2"
+        
+      },
+      "mapping": {
+        "speed": "Park.N1.Windspeed",
+        "height": "Park.N1.CloudHeight1",
+        "layer": "Park.N1.CloudLayer1"
+      }
+    }
+  ],
+  "routines": [
+    {
+      "name": "wind_data",
+      "source": {
+        "type": "rand",
+            "params": {
+         "speed": "float64 m/s",
+        "height": "uint16 m",
+        "layer": "string"  
+            }
+      },
+
+
+      "sinks": ["opcua"],
+      "interval_seconds": 10
+    }
+    
+
+  ],
+  "logging": {
+    "level": "info",
+    "maxsize": 0,
+    "maxage": 0,
+    "maxbackups": 0,
+    "compress": true
+  }
+}
+

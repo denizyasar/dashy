@@ -1,0 +1,40 @@
+.card-control {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0px !important;
+}
+
+.card-control * {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0px !important;
+}
+
+.sharpen-image {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.card-timestamp-wrapper {
+    margin-top: -46px;
+}
+
+.card-timestamp {
+    padding: 2px !important;
+}
+
+.card-button-wrapper {
+    margin-top: -10px;
+}
+
+.card-button {
+    padding: 8px !important;
+}
+

@@ -1,0 +1,9 @@
+{
+  "wave_height": {"timestamp": "2021-08-28T19:25:43.511Z", "value":"4.0"},
+  "wave_height_max": {"timestamp": "2012-04-24T18:25:43.511Z", "value":"3.7"},
+  "water_temp": {"timestamp": "2012-04-24T18:25:43.511Z", "value":"19.6"},
+  "wave_period": {"timestamp": "2012-04-25T18:25:43.511Z", "value":"4.4"},
+  "peak_period": {"timestamp": "2012-04-26T18:25:43.511Z", "value":"5.4"},
+  "peak_direction": {"timestamp": "2012-04-27T18:25:43.511Z", "value":"083"},
+  "mean_direction": {"timestamp": "2012-04-28T18:25:43.511Z", "value":"183"}
+}
