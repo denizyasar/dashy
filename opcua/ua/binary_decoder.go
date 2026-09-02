@@ -512,13 +512,13 @@ func (dec *BinaryDecoder) ReadByteString(value *ByteString) error {
 	return nil
 }
 
-// ReadXMLElement reads a XmlElement.
-func (dec *BinaryDecoder) ReadXMLElement(value *XmlElement) error {
+// ReadXMLElement reads a XMLElement.
+func (dec *BinaryDecoder) ReadXMLElement(value *XMLElement) error {
 	var s string
 	if err := dec.ReadString(&s); err != nil {
 		return BadDecodingError
 	}
-	*value = XmlElement(s)
+	*value = XMLElement(s)
 	return nil
 }
 
@@ -801,7 +801,7 @@ func (dec *BinaryDecoder) ReadExtensionObject(value *ExtensionObject) error {
 		}
 		return nil
 	case 0x02:
-		var body XmlElement
+		var body XMLElement
 		err := dec.ReadXMLElement(&body)
 		if err != nil {
 			return BadDecodingError
@@ -997,7 +997,7 @@ func (dec *BinaryDecoder) ReadVariant(value *Variant) error {
 			return nil
 
 		case VariantTypeXMLElement:
-			var v XmlElement
+			var v XMLElement
 			if err := dec.ReadXMLElement(&v); err != nil {
 				return BadDecodingError
 			}
@@ -1209,7 +1209,7 @@ func (dec *BinaryDecoder) ReadVariant(value *Variant) error {
 			return nil
 
 		case VariantTypeXMLElement:
-			var v []XmlElement
+			var v []XMLElement
 			if err := dec.ReadXMLElementArray(&v); err != nil {
 				return BadDecodingError
 			}
@@ -1749,7 +1749,7 @@ func (dec *BinaryDecoder) ReadVariant(value *Variant) error {
 		return BadDecodingError
 
 	case VariantTypeXMLElement:
-		var vals []XmlElement
+		var vals []XMLElement
 		if err := dec.ReadXMLElementArray(&vals); err != nil {
 			return BadDecodingError
 		}
@@ -1758,7 +1758,7 @@ func (dec *BinaryDecoder) ReadVariant(value *Variant) error {
 			return BadDecodingError
 		}
 		if len(dims) == 2 {
-			res := make([][]XmlElement, dims[0])
+			res := make([][]XMLElement, dims[0])
 			for i := range res {
 				res[i], vals = vals[:dims[1]], vals[dims[1]:]
 			}
@@ -1766,9 +1766,9 @@ func (dec *BinaryDecoder) ReadVariant(value *Variant) error {
 			return nil
 		}
 		if len(dims) == 3 {
-			res := make([][][]XmlElement, dims[0])
+			res := make([][][]XMLElement, dims[0])
 			for i := range res {
-				res[i] = make([][]XmlElement, dims[1])
+				res[i] = make([][]XMLElement, dims[1])
 				for j := range res[i] {
 					res[i][j], vals = vals[:dims[2]], vals[dims[2]:]
 				}
@@ -2427,8 +2427,8 @@ func (dec *BinaryDecoder) ReadByteStringArray(value *[]ByteString) error {
 	return nil
 }
 
-// ReadXMLElementArray reads a XmlElement array.
-func (dec *BinaryDecoder) ReadXMLElementArray(value *[]XmlElement) error {
+// ReadXMLElementArray reads a XMLElement array.
+func (dec *BinaryDecoder) ReadXMLElementArray(value *[]XMLElement) error {
 	var n int32
 	if err := dec.ReadInt32(&n); err != nil {
 		return BadDecodingError
@@ -2437,7 +2437,7 @@ func (dec *BinaryDecoder) ReadXMLElementArray(value *[]XmlElement) error {
 		*value = nil
 		return nil
 	}
-	temp := make([]XmlElement, n)
+	temp := make([]XMLElement, n)
 	for i := 0; i < len(temp); i++ {
 		if err := dec.ReadXMLElement(&temp[i]); err != nil {
 			return BadDecodingError

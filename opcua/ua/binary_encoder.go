@@ -542,8 +542,8 @@ func (enc *BinaryEncoder) WriteByteString(value ByteString) error {
 	return nil
 }
 
-// WriteXMLElement writes a XmlElement
-func (enc *BinaryEncoder) WriteXMLElement(value XmlElement) error {
+// WriteXMLElement writes a XMLElement
+func (enc *BinaryEncoder) WriteXMLElement(value XMLElement) error {
 	return enc.WriteString(string(value))
 }
 
@@ -1001,7 +1001,7 @@ func (enc *BinaryEncoder) WriteVariant(value Variant) error {
 		if err := enc.WriteByteString(v1); err != nil {
 			return BadEncodingError
 		}
-	case XmlElement:
+	case XMLElement:
 		if err := enc.WriteByte(VariantTypeXMLElement); err != nil {
 			return BadEncodingError
 		}
@@ -1448,14 +1448,14 @@ func (enc *BinaryEncoder) WriteVariant(value Variant) error {
 		if err := enc.WriteInt32Array(dims3D(v1)); err != nil {
 			return BadEncodingError
 		}
-	case []XmlElement:
+	case []XMLElement:
 		if err := enc.WriteByte(VariantTypeXMLElement | VariantTypeArray); err != nil {
 			return BadEncodingError
 		}
 		if err := enc.WriteXMLElementArray(v1); err != nil {
 			return BadEncodingError
 		}
-	case [][]XmlElement:
+	case [][]XMLElement:
 		if err := enc.WriteByte(VariantTypeXMLElement | VariantTypeArray | VariantTypeMultiDimensionArray); err != nil {
 			return BadEncodingError
 		}
@@ -1465,7 +1465,7 @@ func (enc *BinaryEncoder) WriteVariant(value Variant) error {
 		if err := enc.WriteInt32Array(dims2D(v1)); err != nil {
 			return BadEncodingError
 		}
-	case [][][]XmlElement:
+	case [][][]XMLElement:
 		if err := enc.WriteByte(VariantTypeXMLElement | VariantTypeArray | VariantTypeMultiDimensionArray); err != nil {
 			return BadEncodingError
 		}
@@ -2014,8 +2014,8 @@ func (enc *BinaryEncoder) WriteByteStringArray(value []ByteString) error {
 	return nil
 }
 
-// WriteXMLElementArray writes a XmlElement array.
-func (enc *BinaryEncoder) WriteXMLElementArray(value []XmlElement) error {
+// WriteXMLElementArray writes a XMLElement array.
+func (enc *BinaryEncoder) WriteXMLElementArray(value []XMLElement) error {
 	if value == nil {
 		return enc.WriteInt32(-1)
 	}
