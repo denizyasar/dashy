@@ -17,12 +17,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/denizyasar/dashy/agent/auth"
-	"github.com/denizyasar/dashy/agent/sinks"
-	"github.com/denizyasar/dashy/agent/sinks/opcua"
-	"github.com/denizyasar/dashy/agent/sinks/value"
-	"github.com/denizyasar/dashy/agent/sources"
-	"github.com/denizyasar/dashy/opcua/ua"
+	"github.com/NorthlandPowerEurope/dashy/agent/auth"
+	"github.com/NorthlandPowerEurope/dashy/agent/sinks"
+	"github.com/NorthlandPowerEurope/dashy/agent/sinks/opcua"
+	"github.com/NorthlandPowerEurope/dashy/agent/sinks/value"
+	"github.com/NorthlandPowerEurope/dashy/agent/sources"
+	"github.com/NorthlandPowerEurope/dashy/opcua/ua"
 	"github.com/malivvan/servicekit"
 	"github.com/malivvan/servicekit/log"
 )
