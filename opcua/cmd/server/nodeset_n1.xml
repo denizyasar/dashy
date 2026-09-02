@@ -1,0 +1,239 @@
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>http://github.com/malivvan/opcua/server/</Uri>
+    </NamespaceUris>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="SByte">i=2</Alias>
+        <Alias Alias="Byte">i=3</Alias>
+        <Alias Alias="Int16">i=4</Alias>
+        <Alias Alias="UInt16">i=5</Alias>
+        <Alias Alias="Int32">i=6</Alias>
+        <Alias Alias="UInt32">i=7</Alias>
+        <Alias Alias="Int64">i=8</Alias>
+        <Alias Alias="UInt64">i=9</Alias>
+        <Alias Alias="Float">i=10</Alias>
+        <Alias Alias="Double">i=11</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="Guid">i=14</Alias>
+        <Alias Alias="ByteString">i=15</Alias>
+        <Alias Alias="XmlElement">i=16</Alias>
+        <Alias Alias="NodeId">i=17</Alias>
+        <Alias Alias="StatusCode">i=19</Alias>
+        <Alias Alias="QualifiedName">i=20</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="Number">i=26</Alias>
+        <Alias Alias="Integer">i=27</Alias>
+        <Alias Alias="UInteger">i=28</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasModellingRule">i=37</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="HasSubtype">i=45</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="HasNotifier">i=48</Alias>
+        <Alias Alias="NodeClass">i=257</Alias>
+        <Alias Alias="Duration">i=290</Alias>
+        <Alias Alias="UtcTime">i=294</Alias>
+        <Alias Alias="Argument">i=296</Alias>
+        <Alias Alias="Range">i=884</Alias>
+        <Alias Alias="EUInformation">i=887</Alias>
+        <Alias Alias="EnumValueType">i=7594</Alias>
+        <Alias Alias="TimeZoneDataType">i=8912</Alias>
+    </Aliases>
+    <UAObject NodeId="ns=1;s=Park" BrowseName="1:Park">
+        <DisplayName>Park</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=1;s=Park.N1" BrowseName="1:N1">
+        <DisplayName>N1</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Windspeed</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.WindDirection</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.CloudLayer1</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.CloudLayer2</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.CloudHeight1</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.CloudHeight2</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Visibility</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.QNH</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.SigWaveHeight</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.MaxWaveHeight</Reference>   
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.MeanWavePeriod</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.WaveDirection</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            </References>
+    </UAObject>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.Windspeed" BrowseName="1:Windspeed" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Windspeed</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.WindDirection" BrowseName="1:WindDirection" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Wind Direction</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=1;s=Park.N1.CloudLayer1" BrowseName="1:CloudLayer1" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Cloud Layer 1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=1;s=Park.N1.CloudLayer2" BrowseName="1:CloudLayer2" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Cloud Layer 2</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt16" NodeId="ns=1;s=Park.N1.CloudHeight1" BrowseName="1:CloudHeight1" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Cloud Height 1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt16" NodeId="ns=1;s=Park.N1.CloudHeight2" BrowseName="1:CloudHeight2" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Cloud Height 2</DisplayName>
+        <References>    
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.Visibility" BrowseName="1:Visibility" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Visibility</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.QNH" BrowseName="1:QNH" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>QNH</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.SigWaveHeight" BrowseName="1:SigWaveHeight" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Significant Wave Height</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.MaxWaveHeight" BrowseName="1:MaxWaveHeight" UserAccessLevel="3 " AccessLevel="3">
+        <DisplayName>Maximal Wave Height</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.MeanWavePeriod" BrowseName="1:MeanWavePeriod" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Mean Wave Period</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.WaveDirection" BrowseName="1:WaveDirection" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Wave Direction</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAVariable>
+
+
+    <UAObject NodeId="ns=1;i=15182" BrowseName="1:http://github.com/malivvan/opcua/testserver/" >
+    <DisplayName>http://github.com/malivvan/opcua/testserver/</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=15183</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15184</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15185</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15186</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15187</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15188</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15189</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=15183" BrowseName="NamespaceUri" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespaceUri</DisplayName>
+    <Description>The URI of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">http://github.com/malivvan/opcua/testserver/</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15184" BrowseName="NamespaceVersion" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespaceVersion</DisplayName>
+    <Description>The human readable string representing version of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">1.03</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15185" BrowseName="NamespacePublicationDate" DataType="DateTime" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespacePublicationDate</DisplayName>
+    <Description>The publication date for the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <uax:DateTime>2019-03-29T12:00:00Z</uax:DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15186" BrowseName="IsNamespaceSubset" DataType="Boolean" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>IsNamespaceSubset</DisplayName>
+    <Description>If TRUE then the server only supports a subset of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">false</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15187" BrowseName="StaticNodeIdTypes"  DataType="i=256" ValueRank="1" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticNodeIdTypes</DisplayName>
+    <Description>A list of IdTypes for nodes which are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15188" BrowseName="StaticNumericNodeIdRange" DataType="i=291" ValueRank="1" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticNumericNodeIdRange</DisplayName>
+    <Description>A list of ranges for numeric node ids which are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15189" BrowseName="StaticStringNodeIdPattern" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticStringNodeIdPattern</DisplayName>
+    <Description>A regular expression which matches string node ids are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+</UANodeSet>

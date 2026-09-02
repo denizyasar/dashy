@@ -1,0 +1,427 @@
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>http://github.com/malivvan/opcua/server/</Uri>
+    </NamespaceUris>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="SByte">i=2</Alias>
+        <Alias Alias="Byte">i=3</Alias>
+        <Alias Alias="Int16">i=4</Alias>
+        <Alias Alias="UInt16">i=5</Alias>
+        <Alias Alias="Int32">i=6</Alias>
+        <Alias Alias="UInt32">i=7</Alias>
+        <Alias Alias="Int64">i=8</Alias>
+        <Alias Alias="UInt64">i=9</Alias>
+        <Alias Alias="Float">i=10</Alias>
+        <Alias Alias="Double">i=11</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="Guid">i=14</Alias>
+        <Alias Alias="ByteString">i=15</Alias>
+        <Alias Alias="XmlElement">i=16</Alias>
+        <Alias Alias="NodeId">i=17</Alias>
+        <Alias Alias="StatusCode">i=19</Alias>
+        <Alias Alias="QualifiedName">i=20</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="Number">i=26</Alias>
+        <Alias Alias="Integer">i=27</Alias>
+        <Alias Alias="UInteger">i=28</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasModellingRule">i=37</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="HasSubtype">i=45</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="HasNotifier">i=48</Alias>
+        <Alias Alias="NodeClass">i=257</Alias>
+        <Alias Alias="Duration">i=290</Alias>
+        <Alias Alias="UtcTime">i=294</Alias>
+        <Alias Alias="Argument">i=296</Alias>
+        <Alias Alias="Range">i=884</Alias>
+        <Alias Alias="EUInformation">i=887</Alias>
+        <Alias Alias="EnumValueType">i=7594</Alias>
+        <Alias Alias="TimeZoneDataType">i=8912</Alias>
+    </Aliases>
+    <UAObject NodeId="ns=1;s=Park" BrowseName="1:Park">
+        <DisplayName>Park</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=1;s=Park.N1" BrowseName="1:N1">
+        <DisplayName>N1</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Boolean</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Byte</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.ByteString</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.DateTime</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Double</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Duration</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Enumeration</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Float</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Guid</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Int16</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Int32</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Int64</Reference>
+            <!-- <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Integer</Reference> -->
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.LocalizedText</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.NodeId</Reference>
+            <!-- <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Number</Reference> -->
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.QualifiedName</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.SByte</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.String</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.UInt16</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.UInt32</Reference>
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.UInt64</Reference>
+            <!-- <Reference ReferenceType="Organizes">ns=1;s=Park.N1.UInteger</Reference> -->
+            <!-- <Reference ReferenceType="Organizes">ns=1;s=Park.N1.Variant</Reference> -->
+            <Reference ReferenceType="Organizes">ns=1;s=Park.N1.XmlElement</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            </References>
+    </UAObject>
+
+    <UAVariable DataType="Boolean" NodeId="ns=1;s=Park.N1.Boolean" BrowseName="1:Boolean" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Boolean</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Byte" NodeId="ns=1;s=Park.N1.Byte" BrowseName="1:Byte" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Byte</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Byte>1</uax:Byte>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="ByteString" NodeId="ns=1;s=Park.N1.ByteString" BrowseName="1:ByteString" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>ByteString</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:ByteString>EjSrzQ==</uax:ByteString>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" NodeId="ns=1;s=Park.N1.DateTime" BrowseName="1:DateTime" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>DateTime</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2015-05-27T14:03:25Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Double" NodeId="ns=1;s=Park.N1.Double" BrowseName="1:Double" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Double</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Double>3.14</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Duration" NodeId="ns=1;s=Park.N1.Duration" BrowseName="1:Duration" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Duration</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Double>9.999</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="i=852" NodeId="ns=1;s=Park.N1.Enumeration" BrowseName="1:Enumeration" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Enumeration</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>1</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Float" NodeId="ns=1;s=Park.N1.Float" BrowseName="1:Float" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Float</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Float>12.34</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Guid" NodeId="ns=1;s=Park.N1.Guid" BrowseName="1:Guid" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Guid</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Guid>
+                <uax:String>EA292DEC-0F79-43F0-84FF-2E4AC0150919</uax:String>
+            </uax:Guid>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Int16" NodeId="ns=1;s=Park.N1.Int16" BrowseName="1:Int16" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Int16</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int16>0</uax:Int16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Int32" NodeId="ns=1;s=Park.N1.Int32" BrowseName="1:Int32" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Int32</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Int64" NodeId="ns=1;s=Park.N1.Int64" BrowseName="1:Int64" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Int64</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int64>0</uax:Int64>
+        </Value>
+    </UAVariable>
+    <!-- <UAVariable DataType="Integer" NodeId="ns=1;s=Park.N1.Integer" BrowseName="1:Integer" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Integer</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int16>321</uax:Int16>
+        </Value>
+    </UAVariable> -->
+    <UAVariable DataType="LocalizedText" NodeId="ns=1;s=Park.N1.LocalizedText" BrowseName="1:LocalizedText" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>LocalizedText</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>DE</uax:Locale>
+                <uax:Text>Hallo Welt</uax:Text>
+            </uax:LocalizedText>
+        </Value>        
+    </UAVariable>
+    <UAVariable DataType="NodeId" NodeId="ns=1;s=Park.N1.NodeId" BrowseName="1:NodeId" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>NodeId</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=3;s=ThisIsAStringIdentifier</uax:Identifier>
+            </uax:NodeId>
+        </Value> 
+    </UAVariable>
+    <!-- <UAVariable DataType="Number" NodeId="ns=1;s=Park.N1.Number" BrowseName="1:Number" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Number</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Float>12.34</uax:Float>
+        </Value>
+    </UAVariable> -->
+    <UAVariable DataType="QualifiedName" NodeId="ns=1;s=Park.N1.QualifiedName" BrowseName="1:QualifiedName" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>QualifiedName</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:QualifiedName>
+                <uax:NamespaceIndex>4</uax:NamespaceIndex>
+                <uax:Name>A qualified Name</uax:Name>
+            </uax:QualifiedName>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SByte" NodeId="ns=1;s=Park.N1.SByte" BrowseName="1:SByte" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>SByte</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:SByte>0</uax:SByte>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=1;s=Park.N1.String" BrowseName="1:String" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>String</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:String>Take Care</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" NodeId="ns=1;s=Park.N1.UInt16" BrowseName="1:UInt16" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>UInt16</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" NodeId="ns=1;s=Park.N1.UInt32" BrowseName="1:UInt32" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>UInt32</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>0</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt64" NodeId="ns=1;s=Park.N1.UInt64" BrowseName="1:UInt64" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>UInt64</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:UInt64>0</uax:UInt64>
+        </Value>
+    </UAVariable>
+    <!-- <UAVariable DataType="UInteger" NodeId="ns=1;s=Park.N1.UInteger" BrowseName="1:UInteger" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>UInteger</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>433221</uax:UInt32>
+        </Value>
+    </UAVariable> -->
+    <!-- <UAVariable DataType="i=24" NodeId="ns=1;s=Park.N1.Variant" BrowseName="1:Variant" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>Variant</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>-4455</uax:Int32>
+        </Value>
+    </UAVariable> -->
+    <UAVariable DataType="XmlElement" NodeId="ns=1;s=Park.N1.XmlElement" BrowseName="1:XmlElement" UserAccessLevel="3" AccessLevel="3">
+        <DisplayName>XmlElement</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=Park.N1</Reference>
+        </References>
+        <Value>
+            <uax:XmlElement><foo>bar</foo></uax:XmlElement>
+        </Value>
+    </UAVariable>
+    <UAObject NodeId="ns=1;i=15182" BrowseName="1:http://github.com/malivvan/opcua/testserver/" >
+    <DisplayName>http://github.com/malivvan/opcua/testserver/</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=15183</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15184</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15185</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15186</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15187</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15188</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15189</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=15183" BrowseName="NamespaceUri" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespaceUri</DisplayName>
+    <Description>The URI of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">http://github.com/malivvan/opcua/testserver/</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15184" BrowseName="NamespaceVersion" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespaceVersion</DisplayName>
+    <Description>The human readable string representing version of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">1.03</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15185" BrowseName="NamespacePublicationDate" DataType="DateTime" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>NamespacePublicationDate</DisplayName>
+    <Description>The publication date for the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <uax:DateTime>2019-03-29T12:00:00Z</uax:DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15186" BrowseName="IsNamespaceSubset" DataType="Boolean" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>IsNamespaceSubset</DisplayName>
+    <Description>If TRUE then the server only supports a subset of the namespace.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">false</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15187" BrowseName="StaticNodeIdTypes"  DataType="i=256" ValueRank="1" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticNodeIdTypes</DisplayName>
+    <Description>A list of IdTypes for nodes which are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15188" BrowseName="StaticNumericNodeIdRange" DataType="i=291" ValueRank="1" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticNumericNodeIdRange</DisplayName>
+    <Description>A list of ranges for numeric node ids which are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15189" BrowseName="StaticStringNodeIdPattern" DataType="String" UserAccessLevel="1" AccessLevel="1">
+    <DisplayName>StaticStringNodeIdPattern</DisplayName>
+    <Description>A regular expression which matches string node ids are the same in every server that exposes them.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15182</Reference>
+    </References>
+  </UAVariable>
+</UANodeSet>
