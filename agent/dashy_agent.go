@@ -131,7 +131,7 @@ func (r *Routine) Stop() {
 
 type Service struct {
 	opc      *opcua.Server
-	routines []Routine
+	routines []*Routine
 }
 
 func (s *Service) Start(workdir servicekit.Workdir) error {
@@ -176,7 +176,7 @@ func (s *Service) Start(workdir servicekit.Workdir) error {
 				ID:           "dashyua",
 				Name:         "Dashy OPC UA Server",
 				Version:      "2.0.0",
-				Repository:   "http://github.com/denizyasar/dashy/opcua",
+				Repository:   "http://github.com/NorthlandPowerEurope/dashy/opcua",
 				Manufacturer: "Northland Power Europe",
 			},
 			Users:   users,
@@ -230,6 +230,7 @@ func (s *Service) Start(workdir servicekit.Workdir) error {
 		routine.running.Store(true)
 		routine.waitgroup.Add(1)
 		go routine.run()
+		s.routines = append(s.routines, routine)
 
 		log.Info().Str("routine", routineConfig.Name).Msg("routine started")
 	}
