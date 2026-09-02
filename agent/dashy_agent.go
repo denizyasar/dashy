@@ -17,12 +17,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/NorthlandPowerEurope/dashy/agent/auth"
-	"github.com/NorthlandPowerEurope/dashy/agent/sinks"
-	"github.com/NorthlandPowerEurope/dashy/agent/sinks/opcua"
-	"github.com/NorthlandPowerEurope/dashy/agent/sinks/value"
-	"github.com/NorthlandPowerEurope/dashy/agent/sources"
-	"github.com/NorthlandPowerEurope/dashy/opcua/ua"
+	"github.com/denizyasar/dashy/agent/auth"
+	"github.com/denizyasar/dashy/agent/sinks"
+	"github.com/denizyasar/dashy/agent/sinks/opcua"
+	"github.com/denizyasar/dashy/agent/sinks/value"
+	"github.com/denizyasar/dashy/agent/sources"
+	"github.com/denizyasar/dashy/opcua/ua"
 	"github.com/malivvan/servicekit"
 	"github.com/malivvan/servicekit/log"
 )
@@ -176,7 +176,7 @@ func (s *Service) Start(workdir servicekit.Workdir) error {
 				ID:           "dashyua",
 				Name:         "Dashy OPC UA Server",
 				Version:      "2.0.0",
-				Repository:   "http://github.com/NorthlandPowerEurope/dashy/opcua",
+				Repository:   "http://github.com/denizyasar/dashy/opcua",
 				Manufacturer: "Northland Power Europe",
 			},
 			Users:   users,
