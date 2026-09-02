@@ -6,8 +6,11 @@ name: Build Executables
 # executables for Windows, Linux and macOS - without needing to hard-code the
 # location of dashy.go / dashy_agent.go inside the repo.
 #
-# On every push/PR it produces downloadable build artifacts.
-# On a version tag (v1.2.3) it also attaches the binaries to a GitHub Release.
+# - Every push/PR/manual run produces downloadable build artifacts.
+# - Pushing a tag like v1.2.3 automatically creates a GitHub Release with all
+#   binaries attached.
+# - Running the workflow manually (Actions tab -> "Run workflow") and filling
+#   in the "version" input does the same, without needing to push a tag.
 # ----------------------------------------------------------------------------
 
 on:
@@ -16,7 +19,13 @@ on:
     tags: [ "v*.*.*" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch: {}   # allows manual "Run workflow" button in the Actions tab
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version/tag (e.g. v1.2.3). Leave empty to just build artifacts without creating a release."
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write   # needed so the release job can upload build artifacts
@@ -45,13 +54,9 @@ jobs:
         # -stdmethods=false disables just the "well-known interface method
         # signature" analyzer. This codebase's opcua/ua package intentionally
         # defines ReadByte(value *byte) error (and similarly-styled methods)
-        # to match the consistent Read*/Write* pattern used throughout its
-        # binary encoder/decoder - it does not, and is not meant to, implement
-        # io.ByteReader's ReadByte() (byte, error). This is a known, verified
-        # false positive (the method works correctly and matches the upstream
-        # awcullen/opcua library's design), not a real bug - unlike the
-        # copylocks diagnostics, which stay enabled because those catch
-        # genuine concurrency-safety issues.
+        # to match the Read*/Write* pattern used throughout its binary
+        # encoder/decoder - a verified false positive, not a real bug.
+        # copylocks and all other analyzers stay fully enabled.
         run: go vet -stdmethods=false ./...
 
       - name: go build (compile check only, no artifacts)
@@ -155,7 +160,7 @@ jobs:
           ls -la dist
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: dashy-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/*
@@ -163,16 +168,30 @@ jobs:
           retention-days: 30
 
   # --------------------------------------------------------------------------
-  # 3) Attach binaries to a GitHub Release when a version tag is pushed
+  # 3) Attach binaries to a GitHub Release
+  #    Runs when: a v*.*.* tag is pushed, OR the workflow is run manually
+  #    with the "version" input filled in.
   # --------------------------------------------------------------------------
   release:
     name: Publish GitHub Release
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: |
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.version != '')
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve release version
+        id: version
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "value=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Download all build artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           path: artifacts
 
@@ -185,7 +204,9 @@ jobs:
       - name: Create / update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: release/*
+          tag_name: ${{ steps.version.outputs.value }}
+          name: ${{ steps.version.outputs.value }}
           generate_release_notes: true
+          files: release/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
