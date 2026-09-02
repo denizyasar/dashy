@@ -97,8 +97,11 @@ func (s *Service) Start(workdir servicekit.Workdir) error {
 	// copy over dashboards
 	s.dashboards = []*server.Dashboard{}
 	for i := range config.Dashboards {
-		dashboard := config.Dashboards[i]
-		s.dashboards = append(s.dashboards, &dashboard)
+		// take the address of the slice element directly instead of
+		// copying it into a local variable first - server.Dashboard
+		// contains a sync.Mutex, and copying it (even transiently)
+		// trips go vet's copylocks check.
+		s.dashboards = append(s.dashboards, &config.Dashboards[i])
 	}
 
 	// initialize auth state
